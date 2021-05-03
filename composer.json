@@ -1,0 +1,18 @@
+{
+    "name": "inan/blogdev",
+    "authors": [
+        {
+            "name": "muhammedInan",
+            "email": "muhammed-inan@outlook.com"
+        }
+    ],
+    "require": {
+        "twig/twig": "^3.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "Controller\\": "controller/",
+            "Model\\": "model/"
+        }
+    }
+}
