@@ -36,29 +36,14 @@ class Post
     return $this->id;
   }
 
-  public function getTitle()
-  {
-    return $this->title;
-  }
-
-  public function getContent()
-  {
-    return $this->content;
-  }
-
-  public function getCreationDate()
-  {
-    return $this->creationDate;
-  }
-
-  public function getUser()
-  {
-      return $this->user;
-  }
-      
   public function setId($id)
   {
       $this->id = (int)$id;
+  }
+
+  public function getTitle()
+  {
+    return $this->title;
   }
 
   public function setTitle($title)
@@ -68,6 +53,11 @@ class Post
       } else {
         $this->title = $title;
       }
+  }
+
+  public function getContent()
+  {
+    return $this->content;
   }
 
   public function setContent($content)
@@ -80,15 +70,24 @@ class Post
       
   }
 
+  public function getCreationDate()
+  {
+    return $this->creationDate;
+  }
+
   public function setCreationDate(\DateTime $creationDate)
   {
       $this->creationDate = $creationDate;
   }
 
+  public function getUser()
+  {
+      return $this->user;
+  }
+      
   public function setUser($user)
   {
       $this->user = $user;
   }
-
 
 }
