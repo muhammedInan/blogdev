@@ -2,10 +2,11 @@
 
 require_once 'vendor/autoload.php';
 
-use Controller\Controller;
+
+use App\Controller\Controller;
 
 if  (isset($_GET['c']) && isset($_GET['t'])) {
-    $class = 'Controllers\\' . ucfirst($_GET['c']) . 'Controller';
+    $class = 'Controller\\' . ucfirst($_GET['c']) . 'Controller';
     $target = $_GET['t'];
     $params = (isset($_GET['params'])) ? $_GET['params'] : array();
 

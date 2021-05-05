@@ -10,6 +10,9 @@ class Post
   protected $creationDate;
   protected $user;
 
+  const AUTEUR_INVALIDE = 1;
+  const CONTENU_INVALIDE = 2;
+
   public function __construct($valeurs = [])
   {
       if (!empty($valeurs)) {
@@ -53,5 +56,39 @@ class Post
       return $this->user;
   }
       
-  
+  public function setId($id)
+  {
+      $this->id = (int)$id;
+  }
+
+  public function setTitle($title)
+  {
+      if(!is_string($title) || empty($title)) {
+        $this->erreurs[] = self::AUTEUR_INVALIDE;
+      } else {
+        $this->title = $title;
+      }
+  }
+
+  public function setContent($content)
+  {
+      if(!is_string($content) || empty($content)) {
+        $this->erreurs[] = self::CONTENU_INVALIDE;
+      } else {
+        $this->content = $content;
+      }
+      
+  }
+
+  public function setCreationDate(\DateTime $creationDate)
+  {
+      $this->creationDate = $creationDate;
+  }
+
+  public function setUser($user)
+  {
+      $this->user = $user;
+  }
+
+
 }
