@@ -2,6 +2,8 @@
 
 namespace App\Model\Entity;
 
+use hydratation;
+
 class Comment {
     
     protected $id;
@@ -12,23 +14,9 @@ class Comment {
     protected $published;
 
 
-    public function __construct($valeurs = []){
+    use hydratation;
 
-        if(!empty($valeurs)){
-            $this->hydrate($valeurs);
-        }
-    }
-
-    public function hydrate($donnees){
-        foreach ($donnees as $attribut => $valeur){
-        $methode = 'set' . ucfirst($attribut);
-        
-        if (is_callable($this, $methode)) {
-            $this->$methode($valeur);
-        }
-     }
-
-    }
+    
 
     public function getId()
     {
