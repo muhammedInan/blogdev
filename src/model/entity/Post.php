@@ -2,8 +2,6 @@
 
 namespace App\Model\Entity;
 
-
-
 class Post extends Model
 {
 
@@ -16,61 +14,61 @@ class Post extends Model
   protected $creationDate;
   protected $user;
 
-  public function getId()
-  {
-    return $this->id;
-  }
-
-  public function setId($id)
-  {
-    $this->id = (int)$id;
-  }
-
-  public function getTitle()
-  {
-    return $this->title;
-  }
-
-  public function setTitle($title)
-  {
-    if (!is_string($title) || empty($title)) {
-      $this->erreurs[] = self::INVALID_AUTHOR;
-    } else {
-      $this->title = $title;
+    public function getId()
+    {
+      return $this->id;
     }
-  }
 
-  public function getContent()
-  {
-    return $this->content;
-  }
-
-  public function setContent($content)
-  {
-    if (!is_string($content) || empty($content)) {
-      $this->erreurs[] = self::INVALID_CONTENT;
-    } else {
-      $this->content = $content;
+    public function setId($id)
+    {
+      $this->id = (int)$id;
     }
-  }
 
-  public function getCreationDate()
-  {
-    return $this->creationDate;
-  }
+    public function getTitle()
+    {
+      return $this->title;
+    }
 
-  public function setCreationDate(\DateTime $creationDate)
-  {
-    $this->creationDate = $creationDate;
-  }
+    public function setTitle($title)
+    {
+      if (!is_string($title) || empty($title)) {
+        $this->erreurs[] = self::INVALID_AUTHOR;
+      } else {
+        $this->title = $title;
+      }
+    }
 
-  public function getUser()
-  {
-    return $this->user;
-  }
+    public function getContent()
+    {
+      return $this->content;
+    }
 
-  public function setUser($user)
-  {
-    $this->user = $user;
-  }
+    public function setContent($content)
+    {
+      if (!is_string($content) || empty($content)) {
+        $this->erreurs[] = self::INVALID_CONTENT;
+      } else {
+        $this->content = $content;
+      }
+    }
+
+    public function getCreationDate()
+    {
+      return $this->creationDate;
+    }
+
+    public function setCreationDate(\DateTime $creationDate)
+    {
+      $this->creationDate = $creationDate;
+    }
+
+    public function getUser()
+    {
+      return $this->user;
+    }
+
+    public function setUser($user)
+    {
+      $this->user = $user;
+    }
 }
