@@ -1,6 +1,7 @@
 <?php
+namespace App\Model\Entity;
 
-trait hydratation 
+abstract class Model 
 {
 
     public function hydrate($donnees)

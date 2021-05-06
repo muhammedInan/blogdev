@@ -2,9 +2,8 @@
 
 namespace App\Model\Entity;
 
-use hydratation;
 
-class Comment {
+class Comment extends Model{
     
     protected $id;
     protected $postId;
@@ -13,10 +12,6 @@ class Comment {
     protected $commentDate;
     protected $published;
 
-
-    use hydratation;
-
-    
 
     public function getId()
     {
