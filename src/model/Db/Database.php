@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Model;
+namespace App\Model\Db;
 
 class Database  
 {
@@ -21,11 +21,10 @@ class Database
 
     }
 
-    public static function getInstance($database)
+    public static function getInstance()
     {
-        if(!isset(self::$_instance)){
-             //$database = new Database();
-             self::$_instance = $database; 
+        if(!isset(self::$_instance)) {
+             self::$_instance = new Database(); 
         }
 
         return self::$_instance->getInstance();
