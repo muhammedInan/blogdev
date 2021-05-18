@@ -1,8 +1,8 @@
 <?php
 
-namespace Model\Entity;
+namespace App\Model\Entity;
 
-use App\Model\Entity\Model;
+
 
 class User extends Model 
 {
