@@ -2,8 +2,17 @@
 
 require_once 'vendor/autoload.php';
 
-
+use App\Autoloader;
 use App\Controller\Controller;
+
+// on définit une constante contenant le dossier racine du projet
+//define('ROOT', dirname(__DIR__));
+
+//On importe l'autoloader
+//require_once ROOT.'/Autoloader.php';
+//Autoloader::register();
+
+
 
 if  (isset($_GET['c']) && isset($_GET['t'])) {
     $class = 'Controller\\' . ucfirst($_GET['c']) . 'Controller';
