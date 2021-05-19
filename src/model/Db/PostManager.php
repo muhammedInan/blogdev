@@ -11,7 +11,7 @@ class PostManager extends Database
     {
         $db = $this->getConnection();
         $req = $db->query('SELECT post.id, title, content, creation_date,
-                                        user_id,username,email,role
+                                        user_id, username, email, role
                                         FROM post INNER JOIN `user` ON user_id = `user`.id ORDER BY creation_date');
         $posts = array();
         while($post = $req->fetch()) {
@@ -33,6 +33,27 @@ class PostManager extends Database
             $posts[] = $poster;
         }
         return $posts;
+    }
+
+    public function getPost($postId)
+    {
+        $db = $this->getConnection();
+        $req = $db->query('SELECT post.id, title, content, creation_date, user_id FROM post INNER JOIN ̀`user` ON user_id = `user`.id WHERE post.id = ?');
+        $req->execute(array($postId));
+        $post = $req->fetch();
+        $postline = [
+            'id' => $post->id,
+            'title' => $post->title,
+            'content' => $post->content,
+            'creationDate' =>new \DateTime($post->creation_date),
+        ];
+        $userline = [
+            'id' => $post->user_id,
+        ];
+        $user = new User($userline);
+        $poster = new Post ($postline);
+        $poster->setUser($user);
+        return $poster;
     }
 
 }
