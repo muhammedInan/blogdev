@@ -14,4 +14,24 @@ class PostController extends Controller {
             'posts' => $posts,
         ));
     }
+
+    public function addPost()
+    {
+
+    }
+
+    public function updatePost()
+    {
+
+    }
+
+    public function deletePost()
+    {
+
+    }
+
+    public function showPost()
+    {
+        
+    }
 }
