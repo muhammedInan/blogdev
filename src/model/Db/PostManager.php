@@ -67,4 +67,25 @@ class PostManager extends Database
         ));
     }
 
+    public function updatePost(Post $post)
+    {
+        $db = $this->getConnection();
+        $req = $db->prepare(' UPDATE posts set title = :title , content = :content WHERE id = :post_id');
+        $req->execute(array(
+            $post->getTitle(),
+            $post->getContent(),
+            $post->getUser()->getId(),
+        ));
+    }
+
+    public function deletePost(Post $post)
+    {
+        $db = $this->getConnection();
+        $req = $db->prepare(' DELETE FROM post WHERE id = ? AND user_id = ?');
+        $req->execute(array(
+            $post->getId(),
+            $post->getUser()->getId()
+        ));
+    }
+
 }
