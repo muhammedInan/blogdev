@@ -56,4 +56,15 @@ class PostManager extends Database
         return $poster;
     }
 
+    public function addPost(Post $post)
+    {
+        $db = $this->getConnection();
+        $req = $db->prepare('INSERT INTO `post`(`title`, `content`, `creation_date`, `user_id`) VALUES (?, ?,NOW(),?) ');
+        $req->execute(array(
+            $post->getTitle(),
+            $post->getContent(),
+            $post->getUser()->getId(),
+        ));
+    }
+
 }
