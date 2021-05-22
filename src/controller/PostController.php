@@ -17,7 +17,8 @@ class PostController extends Controller {
 
     public function addPost()
     {
-
+        $postManager = new PostManager();
+        
     }
 
     public function updatePost()
@@ -32,6 +33,6 @@ class PostController extends Controller {
 
     public function showPost()
     {
-        
+
     }
 }
