@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use Components\Session;
+
 require_once 'vendor/autoload.php';
 
 class Controller
@@ -27,4 +29,33 @@ class Controller
         header('Location: ' .$url );
         exit();
     }
+
+    public function getSession()
+    {
+        return Session::getSession();
+    }
+
+    public function getUser()
+    {
+        return $this->getSession()->getUser();
+    }
+
+    public function genateToken()
+    {
+    $token = bin2hex(random_bytes(32));
+    $this->getSession()->setToken($token);
+    return $token;
+    }
+
+    public function verifyToken($postToken)
+    {
+        $sessionToken = $this->getSession()->getToken();
+        if (isset($sessionToken) AND isset($postToken) AND !empty($sessionToken) AND !empty($postToken)){
+            if ($sessionToken === $postToken) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
 }
