@@ -40,7 +40,7 @@ class Controller
         return $this->getSession()->getUser();
     }
 
-    public function genateToken()
+    public function generateToken()
     {
     $token = bin2hex(random_bytes(32));
     $this->getSession()->setToken($token);
