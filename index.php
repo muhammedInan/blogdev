@@ -1,9 +1,10 @@
-<?php
+<!- <?php
 
 require_once 'vendor/autoload.php';
 
 use App\Autoloader;
 use App\Controller\Controller;
+use App\Controller\DefaultController;
 
 // on définit une constante contenant le dossier racine du projet
 //define('ROOT', dirname(__DIR__));
@@ -14,7 +15,7 @@ use App\Controller\Controller;
 
 
 
-if  (isset($_GET['c']) && isset($_GET['t'])) {
+if (isset($_GET['c']) && isset($_GET['t'])) {
     $class = 'Controller\\' . ucfirst($_GET['c']) . 'Controller';
     $target = $_GET['t'];
     $params = (isset($_GET['params'])) ? $_GET['params'] : array();
@@ -31,13 +32,13 @@ if  (isset($_GET['c']) && isset($_GET['t'])) {
 
     echo 404;
 } else {
-        $class = 'Controller\\DefaultController';
-        $target = 'home';
-        $params = (isset($_GET['params'])) ? $_GET['params'] : array();
-
-        if (class_exists($class, true)) {
-            $class = new $class();
-            if (in_array($target, get_class_methods($class))){
+    $class = DefaultController::class;
+    $target = 'home';
+    
+    $params = (isset($_GET['params'])) ? $_GET['params'] : array(); 
+    if (class_exists($class, true)) {
+        $class = new $class();
+        if (in_array($target, get_class_methods($class))) {
             call_user_func_array([$class, $target], $params);
             exit();
         }

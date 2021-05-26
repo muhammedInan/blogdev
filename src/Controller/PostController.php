@@ -10,7 +10,7 @@ class PostController extends Controller {
 
     public function listPosts()
     {
-        $postManager =  new PostManager();
+        $postManager = new PostManager();
         $posts = $postManager->getPosts();
         return $this->render('post/listPosts.html.twig', array(
             'posts' => $posts,
@@ -82,8 +82,11 @@ class PostController extends Controller {
         }
     }
 
-    public function showPost()
+    public function showPost($postId)
     {
-
+        $user = $this->getUser();
+        $postManager = new PostManager();
+        $post = $postManager->getPost($postId);
+        
     }
 }

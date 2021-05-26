@@ -4,20 +4,19 @@ namespace App\Controller;
 
 use Components\Session;
 
-require_once 'vendor/autoload.php';
 
 class Controller
 {
 
-    public function render($parameters = array())
+    public function render(string $template ,$parameters = array())
     {
+        
         $loader = new \Twig\Loader\FilesystemLoader('./templates/');
-        $content = new \Twig\Environment($loader, array(
+        $twig = new \Twig\Environment($loader, array(
             'cache' => false,
         ));
-
-
-
+        
+        echo $twig->render($template, $parameters);
     }
 
     public function generateUrlRedirection(string $controller, string $method, array $getParameters = array())
